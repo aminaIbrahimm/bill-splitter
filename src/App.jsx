@@ -99,33 +99,49 @@ export default function App() {
 
   return (
     <div className="m-auto p-5 max-w-4xl container border border-neutral-200 rounded my-[5%] bg-gray-50 shadow-2xl overflow-hidden ">
-      <h1 className="text-4xl mb-5 text-center font-bold tracking-wider">RECEIPT</h1>
+      <h1 className="text-4xl mb-5 text-center font-bold tracking-wider text-teal-950">
+        Smart Bill Splitter
+      </h1>
 
-      <div className='border border-neutral-200 rounded p-3 flex justify-center gap-3'>
+      <div className="border border-neutral-200 rounded p-3 flex-col md:flex-row justify-center gap-3">
+        <label>Total Bill:</label>
+        <input
+          className='border border-neutral-200 rounded m-2 px-2 w-25 md:w-l'
+          value={totalBill}
+          onChange={(e) => setTotalBill(e.target.value)}
+          placeholder="Exp: 400"
+        />
         <label>Tax %</label>
         <input
-          className='border border-neutral-200 rounded mx-2 px-2 w-25 md:w-l'
+          className="border border-neutral-200 rounded m-2 px-2 w-25 md:w-l"
           value={taxPercent}
           onChange={(e) => setTaxPercent(e.target.value)}
         />
         <label>Service %</label>
         <input
-          className='border border-neutral-200 rounded mx-2 px-2 w-25 md:w-l'
+          className="border border-neutral-200 rounded m-2 px-2 w-25 md:w-l"
           value={servicePercent}
           onChange={(e) => setServicePercent(e.target.value)}
         />
       </div>
 
-      <div className='mt-5 mb-5'>
-        <h3 className='text-center text-gray-700 font-bold text-2xl'>Participants : </h3>
-        <div className='flex justify-center gap-2 my-3'>
+      <div className="mt-5 mb-5">
+        <h3 className="text-center text-gray-700 font-bold text-2xl">
+          Participants :{" "}
+        </h3>
+        <div className="flex justify-center gap-2 my-3">
           <input
             className="border border-neutral-200 rounded px-2"
             placeholder="Person Name.."
             value={personName}
             onChange={(e) => setPersonName(e.target.value)}
           />
-          <button onClick={addPerson} className='border border-neutral-200 rounded px-2 cursor-pointer bg-gray-300'>Add</button>
+          <button
+            onClick={addPerson}
+            className="border border-neutral-200 rounded px-2 cursor-pointer bg-gray-300"
+          >
+            Add
+          </button>
         </div>
 
         {participants.map((p) => (
@@ -139,10 +155,12 @@ export default function App() {
         ))}
       </div>
 
-      <h3 className='font-bold text-center text-2xl mb-3 text-gray-600'>Results :</h3>
-      <table className='w-full border-collapse'>
+      <h3 className="font-bold text-center text-2xl mb-3 text-gray-700">
+        Results :
+      </h3>
+      <table className="w-full border-collapse">
         <thead>
-          <tr className='border-b border-gray-200 text-gray-800'>
+          <tr className="border-b border-gray-200 text-gray-800">
             <th>Name</th>
             <th>Items Total</th>
             <th>Tax</th>
@@ -152,7 +170,7 @@ export default function App() {
         </thead>
         <tbody>
           {results.map((r) => (
-            <tr key={r.id} className='border-b border-gray-200 text-center'>
+            <tr key={r.id} className="border-b border-gray-200 text-center">
               <td>{r.name}</td>
               <td>{fmt(r.personSubtotal)}</td>
               <td>{fmt(r.taxShare)}</td>
