@@ -31,7 +31,7 @@ function ParticipantCard({ person, onAddItem, onRemoveItem, onRemovePerson }) {
         <strong>{person.name}</strong>
         <button onClick={() => onRemovePerson(person.id)} className='text-red-600 cursor-pointer'>Remove Person</button>
       </div>
-      <div style={{ marginTop: 8 }}>
+      <div className='mt-2'>
         <div className='text-gray-600'>Items:</div>
         {person.items.length === 0 && <div className='text-gray-500 text-center font-bold mb-1'>No items yet</div>}
         <ul className='px-7'>
@@ -140,7 +140,7 @@ export default function App() {
       </div>
 
       <h3 className='font-bold text-center text-2xl mb-3 text-gray-600'>Results :</h3>
-      <table style={{ width: "100%", borderCollapse: "collapse" }}>
+      <table className='w-full border-collapse'>
         <thead>
           <tr className='border-b border-gray-200 text-gray-800'>
             <th>Name</th>
